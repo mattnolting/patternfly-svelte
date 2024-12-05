@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+}
+
+.pf-v6-c-card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  border: 1px dotted gray;
+}
+
+.pf-v-6-c-card {
+  padding: 24px;
+}
+
+.pf-v-6-c-card,
+.pf-v-6-c-card-title,
+.pf-v-6-c-card-header {
+  border: 1px dashed;
+}
+
+.pf-v-6-c-card-title,
+.pf-v-6-c-card-header {
+  padding: 12px;
+}
