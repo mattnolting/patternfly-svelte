@@ -1,16 +1,19 @@
 <script lang='ts'>
   import { createClass } from '$functions/createClasses.ts'
+  import { defaultProps } from '$lib/defaultProps.ts'
+
+  export const cardBody = defaultProps;
+  export const cardBodyState = $state(defaultProps);
 
   let {
-    compClass = createClass('card__body'),
+    compClass = 'card__body',
     tag = 'div',
-    text = '',
     children,
     ...props
   } = $props()
 </script>
 
-<svelte:element this={tag} class="{compClass}">
-  {@html text}
+<svelte:element class="{compClass}" class:pf-m-expanded={cardBodyState.isExpanded} this={tag}>
+  {@html cardBody.text}
   {@render children?.()}
 </svelte:element>

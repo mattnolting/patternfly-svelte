@@ -1,9 +1,5 @@
 <script lang='ts'>
   import { createClass } from '$functions/createClasses.ts'
-  // export const cardHeaderProps = {
-  //   ...cardProps
-  // }
-
   let {
     className = createClass('card-header'),
     text = 'Default card header text',

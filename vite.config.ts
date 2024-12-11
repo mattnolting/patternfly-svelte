@@ -1,29 +1,24 @@
 import { defineConfig } from 'vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import path from 'path';
-console.log(path.dirname);
+
 export default defineConfig({
-	// root: path.resolve(__dirname, 'src'),
-  // build: {
-	// 	outDir: `dist/${path.dirname}`,
-  //   rollupOptions: {
-	// 		input: {
-	// 			index: path.resolve(__dirname, 'src/app.html'),
-  //     }
-  //   }
-  // },
-	// test: {
-	// 	include: ['src/**/*.{test,spec}.{js,ts}']
-	// },
   build: {
-		outDir: './test',
+		outDir: './build',
 	},
 	plugins: [
 		sveltekit()
 	],
 	resolve: {
 		alias: {
-			'$types': '/src/types'
+			$images: path.resolve("./src/lib/images"),
+			$assets: path.resolve("./src/assets"),
+			$base: path.resolve("./src/base"),
+			$components: path.resolve("./src/components"),
+			$functions: path.resolve("./src/lib/functions"),
+			$props: path.resolve("./src/lib"),
+			$styles: path.resolve("./src/scss"),
+			$types: path.resolve("./src/types")
 		}
 	}
 });

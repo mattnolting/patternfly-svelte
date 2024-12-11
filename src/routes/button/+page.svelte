@@ -1,8 +1,5 @@
 <script lang='ts'>
   import Button from '$components/Button/Button.svelte';
-	// import { ariaExpanded } from '../../props/aria';
-
-  // Define props as regular variables
   let buttonText = 'Button text from +page.svelte';
   let buttonIcon = 'ellipsis';
 
@@ -29,7 +26,7 @@
 
 <div class="flex">
   {#each myData as item}
-    <Button tag={item.tag} isExpanded={item.isExpanded} isClicked={item.isClicked} buttonText={item.buttonText} buttonIcon={item.buttonIcon} />
+    <Button tag={item.tag} isExpanded={item.isExpanded} isClicked={item.isClicked} text={item.buttonText} icon={item.buttonIcon} />
     aria-expanded: {item.ariaExpanded}
   {/each}
 

@@ -2,7 +2,6 @@ test-results
 node_modules
 
 # Output
-src/build
 .output
 .vercel
 /.svelte-kit

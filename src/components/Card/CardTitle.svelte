@@ -9,11 +9,10 @@
     children,
     ...props
   } = $props()
-  // console.log(cardStates);
-  // console.log('cardtitle', $inspect(cardStates));
 </script>
 
 <svelte:element this={tag} class="{className}">
+  <!-- <button onclick={() => { c }}>Click me</button> -->
   {@html text}
   {@render children?.()}
 </svelte:element>

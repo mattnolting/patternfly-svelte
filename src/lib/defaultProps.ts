@@ -32,6 +32,8 @@ export const defaultProps: DefaultProperties = {
   isVisible: false,
 };
 
+// TODO: interface - input
+// TODO: interface - layout
 
 export function initializeComponentProps(componentNames: string[], props: DefaultProperties = defaultProps ): { [key: string]: unknown } {
   const components: { [key: string]: unknown } = {};

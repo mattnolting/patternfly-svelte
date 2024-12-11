@@ -6,8 +6,9 @@ import adapter from '@sveltejs/adapter-static';
 import path from 'path';
 
 export const config = {
-	mode: 'development',
+	// mode: 'development',
 	extensions: ['.svelte' ],
+	type: [ 'module' ],
 	onwarn: (warning, handler) => handler(warning),
 	preprocess: [
 		vitePreprocess(),
@@ -66,7 +67,7 @@ export const config = {
 			$assets: path.resolve("./src/assets"),
 			$base: path.resolve("./src/base"),
 			$components: path.resolve("./src/components"),
-			$functions: path.resolve("./src/functions"),
+			$functions: path.resolve("./src/lib/functions"),
 			$props: path.resolve("./src/lib"),
 			$styles: path.resolve("./src/scss"),
 			$types: path.resolve("./src/types")

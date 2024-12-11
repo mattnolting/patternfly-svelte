@@ -8,6 +8,11 @@ export interface GlobalProperties {
   modifiers: string;
   class: string;
   title: string;
+  isClickable?: boolean;
+  isCompact?: boolean;
+  isHidden?: boolean;
+  isExpanded?: boolean;
+  isVisible?: boolean;
   children: unknown;
 }
 

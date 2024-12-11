@@ -14,4 +14,3 @@
 <section>
 	<h1>PatternFly Svelte Playground</h1>
 </section>
-

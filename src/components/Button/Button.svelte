@@ -31,7 +31,7 @@
   let {
     className = createClass('button', 'isRoot'),
     tag = 'button',
-    children = null,
+    children,
     ...props
    } = $props();
 </script>
@@ -42,17 +42,18 @@
   this={tag}
   class="test"
   aria-pressed="{isClicked}"
-  onclick={handleClick}>
+  onclick={handleClick}
+  {...props}>
 
   clicked: {isClicked}
   expanded: {isExpanded}
-  {#if text}
+  <!-- {#if text}
     <ButtonText {text} />
   {/if}
 
   {#if icon}
      <ButtonIcon {icon} />
-  {/if}
+  {/if} -->
 
   {@render children?.()}
 </svelte:element>

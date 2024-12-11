@@ -1,6 +1,5 @@
 <script lang='ts'>
 	import Header from './Header.svelte';
-	// import { page } from '$app/stores';
 	let { children } = $props();
 </script>
 
@@ -8,8 +7,7 @@
 	<Header />
 
 	<main class="container">
-		<!-- Here's the id: {$page.route.id} -->
-		{@render children()}
+		{@render children?.()}
 	</main>
 
 	<footer>
@@ -18,4 +16,3 @@
 		</p>
 	</footer>
 </div>
-

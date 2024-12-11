@@ -62,19 +62,11 @@
       text: 'Card header header header BAZ'
     }
   });
-
-  // Optional: derived state example
   let visibleCards = $derived(cards.filter(card => card.isVisible));
 
 </script>
 <div class="grid">
-  <!-- Here's the id: {$page.route.id} -->
-
-  <Card
-    cardTitle = {{ text: 'yo yo yo ' }}
-    cardHeader
-    cardBody
-  />
+  <Card cardTitle = {{ text: 'yo yo yo ' }} cardHeader cardBody />
   <Card {...card2} />
   <Card cardTitle={{ text: 'heyo Card TITLE'}} cardHeader={{ text: 'heyo Card HEADER'}} cardBody={{ text: 'heyo Card HEADER'}} />
   {#each visibleCards as card (card.id)}

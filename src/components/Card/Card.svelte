@@ -2,7 +2,7 @@
 // TODO: create function for all children
 // 1) Accepts array of elements
 // 2) Looks for `props.{component}` by default
-// 3) Aceepts alernate conditionals
+// 3) Accepts alernate conditionals
 // 4)
 
   import './card.scss'
@@ -11,6 +11,7 @@
   import { defaultStates } from '$props/defaultStates.svelte.ts'
   import { setContext } from 'svelte'
   import DynamicChild from '$components/DynamicChild.svelte'
+  // import returnProps from '$functions/utils.ts';
 
   // Import sub components
   import CardHeader from './CardHeader.svelte'
@@ -19,8 +20,7 @@
 
   export const cardChildren = [ 'title', 'header', 'body', 'footer' ]
 
-  export const cardStates = $state({
-    ...defaultProps,
+  export const cardState = $state({
     ...defaultStates
   })
 
@@ -28,21 +28,18 @@
     card: { ...defaultProps },
     text: 'lets update the text'
   })
+  // bindableProperty = $bindable('fallback value'),
 
-  setContext('card', cardProps)
-
+  setContext('card', cardState);
   let {
     cardClass = createClass('card', 'isRoot'),
     children,
-    cardState = cardStates,
     ...props
   } = $props();
-
-  console.log($state.snapshot(cardStates));
 </script>
 
+<!-- {bindableProperty} -->
 <div class={cardClass}>
-  <!-- <DynamicChild component={CardTitle} condition={cardTitle} /> -->
   <DynamicChild component={CardTitle} condition={props.cardTitle} />
   <DynamicChild component={CardHeader} condition={props.cardHeader} />
   <DynamicChild component={CardBody} condition={props.cardBody} />
