@@ -6,7 +6,6 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"buildFull": "vite build && rollup -c",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -70,6 +69,7 @@
 		"eslint-plugin-svelte": "^2.36.0",
 		"glob": "^11.0.0",
 		"globals": "^15.0.0",
+		"postcss-load-config": "^6.0.1",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
 		"remark": "^15.0.1",
@@ -83,6 +83,7 @@
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"svelte-preprocess": "^6.0.3",
+		"sveltekit-adapter-html-like": "^0.3.2",
 		"tslib": "^2.6.0",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0",
