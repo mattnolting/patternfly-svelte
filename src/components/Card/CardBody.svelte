@@ -1,19 +1,35 @@
 <script lang='ts'>
-  import { createClass } from '$functions/createClasses.ts'
-  import { defaultProps } from '$lib/defaultProps.ts'
+  import { defaultProps } from '$lib/defaultProps.ts';
+  import { defaultStates } from '$lib/defaultProps.ts';
+  import { getContext } from 'svelte';
+  const card = getContext('card');
 
-  export const cardBody = defaultProps;
-  export const cardBodyState = $state(defaultProps);
+  // setContext('cardBody', cardBody);
+  // import { setContext } from 'svelte';
+
+  let cardBody = $state ({
+    ...defaultProps,
+    ...defaultStates,
+    className: 'pf-v6-c-card'
+  });
 
   let {
-    compClass = 'card__body',
     tag = 'div',
     children,
     ...props
-  } = $props()
+  } = $props();
+
+  console.log(cardBody)
+
+  // let {
+  //   className = 'pf-v6-c-card__body',
+  //   tag = 'div',
+  //   children,
+  //   ...props
+  // } = $props();
 </script>
 
-<svelte:element class="{compClass}" class:pf-m-expanded={cardBodyState.isExpanded} this={tag}>
+<svelte:element class="{cardBody.className}" class:pf-m-expanded={card.isExpanded} this={tag}>
   {@html cardBody.text}
   {@render children?.()}
 </svelte:element>

@@ -1,7 +1,6 @@
 <script lang='ts'>
-  import { createClass } from '$functions/createClasses.ts'
   let {
-    className = createClass('card-header'),
+    className = 'pf-v6-c-card__header',
     text = 'Default card header text',
     tag = 'div',
     children,

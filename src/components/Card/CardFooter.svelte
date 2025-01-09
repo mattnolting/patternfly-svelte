@@ -2,7 +2,7 @@
   import { createClass } from '$functions/createClasses.ts'
 
   let {
-    compClass = createClass('card__body'),
+    className = 'pf-v6-c-card__footer',
     tag = 'div',
     text = '',
     children,

@@ -1,47 +1,35 @@
 <script lang='ts'>
-// TODO: create function for all children
-// 1) Accepts array of elements
-// 2) Looks for `props.{component}` by default
-// 3) Accepts alernate conditionals
-// 4)
+  import CardHeader from '$components/Card/CardHeader.svelte';
+  import CardTitle from '$components/Card/CardTitle.svelte';
+  import CardBody from '$components/Card/CardBody.svelte';
+  import DynamicChild from '$components/DynamicChild/DynamicChild.svelte';
+  import { setContext } from 'svelte';
 
-  import './card.scss'
-  import { createClass } from '$functions/createClasses.ts'
-  import { defaultProps } from '$lib/defaultProps.ts'
-  import { defaultStates } from '$props/defaultStates.svelte.ts'
-  import { setContext } from 'svelte'
-  import DynamicChild from '$components/DynamicChild.svelte'
-  // import returnProps from '$functions/utils.ts';
+  // - Card props
+  import { defaultProps } from '$lib/defaultProps.ts';
+  import { defaultStates } from '$lib/defaultProps.ts';
 
-  // Import sub components
-  import CardHeader from './CardHeader.svelte'
-  import CardTitle from './CardTitle.svelte'
-  import CardBody from './CardBody.svelte'
+  let card = $state ({
+    ...defaultProps,
+    ...defaultStates,
+    className: 'pf-v6-c-card'
+  });
 
-  export const cardChildren = [ 'title', 'header', 'body', 'footer' ]
+  setContext('card', card);
 
-  export const cardState = $state({
-    ...defaultStates
-  })
-
-  export const cardProps = $state({
-    card: { ...defaultProps },
-    text: 'lets update the text'
-  })
-  // bindableProperty = $bindable('fallback value'),
-
-  setContext('card', cardState);
   let {
-    cardClass = createClass('card', 'isRoot'),
     children,
     ...props
   } = $props();
+
 </script>
 
-<!-- {bindableProperty} -->
-<div class={cardClass}>
+<div class="{card.className}">
   <DynamicChild component={CardTitle} condition={props.cardTitle} />
   <DynamicChild component={CardHeader} condition={props.cardHeader} />
   <DynamicChild component={CardBody} condition={props.cardBody} />
+  {#if props.text}
+    {props.text}
+  {/if}
   {@render children?.()}
 </div>

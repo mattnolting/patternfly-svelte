@@ -1,9 +1,5 @@
 <script lang='ts'>
-	// import Counter from './Counter.svelte';
-	// import welcome from '$lib/images/svelte-welcome.webp';
-	// import welcomeFallback from '$lib/images/svelte-welcome.png';
-	// import Card from '$components/Card/Card.svelte';
-	// import logo from '$images/PF-IconLogo.svg';
+	import '../styles/patternfly.scss';
 </script>
 
 <svelte:head>

@@ -1,5 +1,15 @@
 <script lang='ts'>
   import Card from '$components/Card/Card.svelte';
+  import CardTitle from '$components/Card/CardTitle.svelte';
+  import CardBody from '$components/Card/CardBody.svelte';
+
+  import { defaultStates } from '$props/defaultStates.svelte.ts';
+  import { setContext } from 'svelte';
+  export const cardState = $state({
+    ...defaultStates
+  });
+
+  setContext('card', cardState);
 
   let cards = $state([
     {
@@ -52,8 +62,11 @@
   });
 
   const card2 = $state({
+    card: {
+      text: 'Here\'s a thing'
+    },
     cardTitle: {
-      text: 'Here\'s a new card, it does a thing FOO'
+      text: 'Here\'s a new ca asdfrd, it does a thing FOO'
     },
     cardBody: {
       text: 'card body new new new content BAR'
@@ -64,12 +77,32 @@
   });
   let visibleCards = $derived(cards.filter(card => card.isVisible));
 
+  let {
+    children,
+    ...props
+  } = $props();
+
+	// import type { PageData } from './$types';
+
+	// let { data }: { data: PageData } = $props();
+
+  // import path from 'path';
+  // import glob from 'glob';
+  // import fs from 'fs-extra';
+  // console.log('Path::', fs);
 </script>
+
 <div class="grid">
-  <Card cardTitle = {{ text: 'yo yo yo ' }} cardHeader cardBody />
+  <Card cardTitle = {{ text: 'yo yo yo ' }} />
   <Card {...card2} />
-  <Card cardTitle={{ text: 'heyo Card TITLE'}} cardHeader={{ text: 'heyo Card HEADER'}} cardBody={{ text: 'heyo Card HEADER'}} />
+  <Card cardHeader={{ text: 'heyo Card HEADER'}} cardBody={{ text: 'heyo Card HEADER'}} cardTitle={{ text: 'heyo Card TITLE', id: 'next thing'}} />
+
   {#each visibleCards as card (card.id)}
-    <Card {...card } />
+    <Card {...card1 } />
   {/each}
+
+  <Card text = 'heesssee'>
+    <CardTitle text='card title thing' />
+    <CardBody text="card body" />
+  </Card>
 </div>

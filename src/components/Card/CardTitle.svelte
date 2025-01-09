@@ -1,18 +1,25 @@
 <script lang='ts'>
-  import { createClass } from '$functions/createClasses.ts';
-	import cardStates from './Card.svelte';
+  // import { createClass } from '$functions/createClasses.ts';
+  import { defaultProps } from '$lib/defaultProps.ts';
+  import { defaultStates } from '$lib/defaultProps.ts';
+  import { getContext } from 'svelte';
+
+  const card = getContext('card');
+
+  let cardTitle = $state ({
+    ...defaultProps,
+    ...defaultStates,
+  });
 
   let {
-    className = createClass('card-title'),
-    text = 'Default card title text',
+    className = 'pf-v6-c-card__title',
     tag = 'div',
     children,
     ...props
-  } = $props()
+  } = $props();
 </script>
 
 <svelte:element this={tag} class="{className}">
-  <!-- <button onclick={() => { c }}>Click me</button> -->
-  {@html text}
+  {@html cardTitle.text}
   {@render children?.()}
 </svelte:element>

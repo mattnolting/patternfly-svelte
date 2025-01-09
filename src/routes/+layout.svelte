@@ -1,6 +1,8 @@
 <script lang='ts'>
 	import Header from './Header.svelte';
-	let { children } = $props();
+	import '../styles/patternfly.scss';
+	let { data, children } = $props();
+
 </script>
 
 <div class="app">
@@ -16,3 +18,16 @@
 		</p>
 	</footer>
 </div>
+
+<style lang="scss">
+	:global(.grid) {
+		display: grid;
+		gap: 24px;
+		grid-auto-columns: minmax(100px, 400px);
+		grid-auto-flow: column;
+	}
+
+	:global(.grid > *) {
+		// background: lightblue;
+	}
+</style>

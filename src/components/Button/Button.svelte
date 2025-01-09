@@ -1,13 +1,18 @@
 <script lang='ts'>
+  // frontMatter
+  //   namespace: card
+  //   component: title
+  //   variants: [
+  //     expandable,
+  //     clickable,
+  //     selectable
+  //   ],
   import { defaultProps } from '$lib/defaultProps.ts';
   import { defaultStates } from '$props/defaultStates.svelte.ts';
   import { createClass } from '$functions/createClasses.ts';
 
   import ButtonText from './ButtonText.svelte';
   import ButtonIcon from './ButtonIcon.svelte';
-
-  // Use `$props()` once and store in a `props` variable
-  // Reactive
 
   export const buttonProps = $state({
     ...defaultProps,

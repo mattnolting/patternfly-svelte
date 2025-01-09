@@ -1,34 +1,55 @@
-// svelte.config.js
-import { sveltePreprocess } from 'svelte-preprocess';
-import { sveltekit } from '@sveltejs/kit/vite';
-import adapterCustomStatic from './adapter-custom-static.js';
-import { defineConfig } from 'vite';
+import preprocess from 'svelte-preprocess';
+import adapter from './adapter-custom-static.js';
 import path from 'path';
 
-export default defineConfig({
-	mode: 'development',
-	extensions: ['.svelte'],
-	plugins: [sveltekit()],
-	preprocess: [sveltePreprocess()],
-	kit: {
-		adapter: adapterCustomStatic({
-			outDir: 'patternfly',
-			assets: 'patternfly/static',
-			pages: 'patternfly/components/',
-			scss: 'patternfly/components/',
-			precompress: false,
-			trailingSlash: 'always'
-		}),
-		alias: {
-			$images: path.resolve("./src/lib/images"),
-			$assets: path.resolve("./src/assets"),
-			$base: path.resolve("./src/base"),
-			$components: path.resolve("./src/components"),
-			$layouts: path.resolve("./src/layouts"),
-			$functions: path.resolve("./src/lib/functions"),
-			$props: path.resolve("./src/lib"),
-			$styles: path.resolve("./src/scss"),
-			$types: path.resolve("./src/types")
-		}
-	}
-});
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+  kit: {
+		adapter: adapter({
+      outDir: 'build',
+      sourceDir: 'src',
+      distDir: 'dist'
+    }),
+    paths: {
+			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
+		},
+    alias: {
+      '$src': path.resolve("./src"),
+			'$assets': path.resolve("./src/assets"),
+			'$base': path.resolve("./src/base"),
+      '$components': path.resolve('./src/components'),
+			'$functions': path.resolve("./src/lib/functions"),
+			'$images': path.resolve("./src/lib/images"),
+			'$layouts': path.resolve("./src/layouts"),
+      '$lib': path.resolve('./src/lib'),
+			'$props': path.resolve("./src/lib"),
+      '$routes': path.resolve('./src/routes'),
+			'$stores': path.resolve("./src/stores"),
+			'$styles': path.resolve("./src/styles"),
+			'$types': path.resolve("./src/types")
+    },
+    prerender: {
+      handleHttpError: ({ path, referrer, message }) => {
+        // Ignore 404s during prerendering
+        if (message.includes('404')) {
+          return;
+        }
+        // Otherwise, throw the error
+        throw new Error(message);
+      }
+    }
+  },
+  preprocess: [
+    preprocess({
+      scss: {
+        includePaths: [path.join(process.cwd(), 'src/styles')],
+        prependData: '@use "src/styles/sass-utilities" as *;'
+      }
+    })
+  ],
+  compilerOptions: {
+    runes: true
+  }
+};
+
+export default config;

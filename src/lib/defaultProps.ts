@@ -8,7 +8,7 @@ interface DefaultProperties {
   id?: string;
   type?: string;
   title?: string;
-  text?: string | undefined;
+  text?: string;
   modifiers?: string;
   isClickable?: boolean;
   isCompact?: boolean;
