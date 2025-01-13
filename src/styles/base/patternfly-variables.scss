@@ -1,0 +1,20 @@
+@use '../sass-utilities' as *;
+@use "./tokens/tokens-palette" as palette;
+@use "./tokens/tokens-default" as default;
+@use "./tokens/tokens-dark" as dark;
+@use "./tokens/tokens-local" as local;
+
+:root {
+  @include pf-v6-set-inverse(false);
+  @include palette.pf-v6-tokens;
+  @include default.pf-v6-tokens;
+  @include local.pf-v6-tokens;
+}
+
+:root:where(.pf-v6-theme-dark) {
+  @include dark.pf-v6-tokens;
+}
+
+@include pf-v6-rtl {
+  @include pf-v6-set-inverse;
+}

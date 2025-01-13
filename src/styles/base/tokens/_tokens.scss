@@ -1,0 +1,8 @@
+// src/styles/base/tokens/_tokens.scss
+@use './tokens-palette' as palette;
+@use './tokens-default' as default;
+
+@mixin pf-v6-tokens {
+  @include palette.pf-v6-tokens;
+  @include default.pf-v6-tokens;
+}
