@@ -1,5 +1,8 @@
 <script lang='ts'>
+  import { defaultStates } from '$src/lib/defaultStates.svelte';
 	import '../styles/patternfly.scss';
+
+	// let componentProps = $state({...defaultStates});
 </script>
 
 <svelte:head>

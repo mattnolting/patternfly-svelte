@@ -1,35 +1,29 @@
 <script lang='ts'>
+	// import { Card } from '$components/Card/Card.svelte';
+	// import { CardBody } from '$components/Card/CardBody.svelte';
   import { defaultProps } from '$lib/defaultProps.ts';
-  import { defaultStates } from '$lib/defaultProps.ts';
+  import { defaultStates } from '$lib/defaultStates.svelte.ts';
   import { getContext } from 'svelte';
-  const card = getContext('card');
 
-  // setContext('cardBody', cardBody);
-  // import { setContext } from 'svelte';
+  // get context from component root if child
+  const cardState = getContext('cardState');
 
-  let cardBody = $state ({
-    ...defaultProps,
+  let cardBodyState = $state ({
     ...defaultStates,
-    className: 'pf-v6-c-card'
   });
 
   let {
-    tag = 'div',
-    children,
+    cardBody = {
+      ...defaultProps,
+      class: 'pf-v6-c-card__body',
+    },
+    children = null,
     ...props
   } = $props();
 
-  console.log(cardBody)
-
-  // let {
-  //   className = 'pf-v6-c-card__body',
-  //   tag = 'div',
-  //   children,
-  //   ...props
-  // } = $props();
 </script>
 
-<svelte:element class="{cardBody.className}" class:pf-m-expanded={card.isExpanded} this={tag}>
-  {@html cardBody.text}
+<svelte:element {...props} this={cardBody.type} aria-expanded={cardBodyState.isExpanded} class="{cardBody.class}">
+  <b>Card Body:</b> {@html cardBody.text}
   {@render children?.()}
 </svelte:element>

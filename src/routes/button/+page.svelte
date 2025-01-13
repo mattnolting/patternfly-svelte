@@ -25,9 +25,9 @@
 </script>
 
 <div class="flex">
-  {#each myData as item}
-    <Button tag={item.tag} isExpanded={item.isExpanded} isClicked={item.isClicked} text={item.buttonText} icon={item.buttonIcon} />
-    aria-expanded: {item.ariaExpanded}
+  {#each myData as entry}
+    <Button tag={entry.tag} isExpanded={entry.isExpanded} isClicked={entry.isClicked} text={entry.buttonText} icon={entry.buttonIcon} />
+    aria-expanded: {entry.ariaExpanded}
   {/each}
 
   <Button buttonText="Hey now" ariaExpanded thing="stuff">Child content</Button>

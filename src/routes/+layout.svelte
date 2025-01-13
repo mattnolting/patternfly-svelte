@@ -1,7 +1,8 @@
 <script lang='ts'>
 	import Header from './Header.svelte';
 	import '../styles/patternfly.scss';
-	let { data, children } = $props();
+	import type { Snippet } from 'svelte';
+	let { children }: {children: Snippet} = $props();
 
 </script>
 
@@ -23,8 +24,7 @@
 	:global(.grid) {
 		display: grid;
 		gap: 24px;
-		grid-auto-columns: minmax(100px, 400px);
-		grid-auto-flow: column;
+		grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
 	}
 
 	:global(.grid > *) {

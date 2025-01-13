@@ -1,5 +1,9 @@
 import { camelCase, pascalCase } from 'case-anything';
 
+export class ComponentClass {
+  states = $state<[]>([])
+}
+
 // insert selector for class
 
 interface DefaultStates {

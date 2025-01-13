@@ -1,20 +1,28 @@
 <script lang='ts'>
-  // import './card.scss';
-	import { Button } from '$components/Button/Button.svelte';
-  import { createClass } from '$functions/createClasses.ts';
   import { defaultProps } from '$lib/defaultProps.ts';
-  import { defaultStates } from '$props/defaultStates.svelte.ts';
+  import { defaultStates } from '$lib/defaultStates.svelte.ts';
+  import { getContext } from 'svelte';
+
+  // get context from component root if child
+  const card = getContext('card');
+
+  let cardHeaderToggleState: any = $state ({
+    ...defaultStates,
+    options: {},
+  });
 
   let {
-    className = 'pf-v6-c-card__header-toggle',
+    cardHeaderToggle = {
+      ...defaultProps,
+      class: 'pf-v6-c-card__header'
+    },
+    options = {},
     children,
     ...props
   } = $props();
 </script>
 
-<h1>Card</h1>
-
-<div class={cardClass}>
-  <Button aria-label="Details" aria-labelledby='' button-icon='' />
+<svelte:element this={cardHeaderToggle.type} class="{cardHeaderToggle.class}">
+  <b>Card Header:</b> {@html props.text}
   {@render children?.()}
-</div>
+</svelte:element>

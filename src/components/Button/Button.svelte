@@ -1,12 +1,4 @@
 <script lang='ts'>
-  // frontMatter
-  //   namespace: card
-  //   component: title
-  //   variants: [
-  //     expandable,
-  //     clickable,
-  //     selectable
-  //   ],
   import { defaultProps } from '$lib/defaultProps.ts';
   import { defaultStates } from '$props/defaultStates.svelte.ts';
   import { createClass } from '$functions/createClasses.ts';

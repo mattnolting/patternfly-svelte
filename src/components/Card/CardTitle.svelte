@@ -1,25 +1,27 @@
 <script lang='ts'>
-  // import { createClass } from '$functions/createClasses.ts';
   import { defaultProps } from '$lib/defaultProps.ts';
-  import { defaultStates } from '$lib/defaultProps.ts';
+  import { defaultStates } from '$lib/defaultStates.svelte.ts';
   import { getContext } from 'svelte';
 
+  // get context from component root if child
   const card = getContext('card');
 
-  let cardTitle = $state ({
-    ...defaultProps,
+  let cardFooterState = $state ({
     ...defaultStates,
+    options: {}
   });
 
   let {
-    className = 'pf-v6-c-card__title',
-    tag = 'div',
+    cardFooter = {
+      ...defaultProps,
+      class: 'pf-v6-c-card__body'
+    },
     children,
     ...props
   } = $props();
 </script>
 
-<svelte:element this={tag} class="{className}">
-  {@html cardTitle.text}
+<svelte:element this={cardFooter.type} class="{cardFooter.class}">
+  <b>Card Body:</b> {@html props.text}
   {@render children?.()}
 </svelte:element>

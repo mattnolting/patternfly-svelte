@@ -6,13 +6,14 @@ export default defineConfig({
   plugins: [sveltekit()],
   resolve: {
     alias: {
-      // '@sass': path.resolve(process.cwd(), 'src/styles/sass-utilities/_index.scss'),
-      '$styles': path.resolve('./src/styles'),
-      '$layouts': path.resolve('./src/layouts'),
-      '$components': path.resolve('./src/components'),
-      // Add all your SvelteKit aliases here
-      // '$lib': path.resolve('./src/lib'),
-      '$routes': path.resolve('./src/routes')
+      $images: path.resolve("./src/lib/images"),
+      $assets: path.resolve("./src/assets"),
+      $base: path.resolve("./src/base"),
+      $components: path.resolve("./src/components"),
+      $functions: path.resolve("./src/lib/functions"),
+      $props: path.resolve("./src/lib"),
+      $styles: path.resolve("./src/*"),
+      $types: path.resolve("./src/types")
     }
   },
   build: {
