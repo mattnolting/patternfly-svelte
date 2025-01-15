@@ -1,12 +1,11 @@
 <script lang='ts'>
 	import Header from './Header.svelte';
 	import '../styles/patternfly.scss';
-	import type { Snippet } from 'svelte';
-	let { children }: {children: Snippet} = $props();
+	let { children, data, ...props } = $props();
 
 </script>
 
-<div class="app">
+<div class="app" {...props}>
 	<Header />
 
 	<main class="container">

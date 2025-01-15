@@ -1,15 +1,15 @@
 <script lang='ts'>
-  import { defaultProps } from '$lib/defaultProps.ts';
-  import { defaultStates } from '$props/defaultStates.svelte.ts';
+  // import { defaultProps } from '$lib/defaultProps.ts';
+  // import { defaultStates } from '$props/defaultStates.svelte.ts';
   import { createClass } from '$functions/createClasses.ts';
 
   import ButtonText from './ButtonText.svelte';
   import ButtonIcon from './ButtonIcon.svelte';
 
-  export const buttonProps = $state({
-    ...defaultProps,
-    ...defaultStates
-  })
+  // export const buttonProps = $state({
+  //   ...defaultProps,
+  //   ...defaultStates
+  // })
 
   let isClicked = $state(false);
   let isExpanded = $state(false);

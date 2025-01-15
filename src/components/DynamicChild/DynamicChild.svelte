@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang='ts'>
   let { component: Component, condition, values = null } = $props();
 
   let componentProps = $state({});
