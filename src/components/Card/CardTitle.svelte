@@ -2,17 +2,19 @@
   import ComponentTemplate from '$lib/ComponentTemplate/ComponentTemplate.svelte';
 
   let {
-    className = 'pf-v6-c-card__title',
+    componentClass = 'pf-v6-c-card__title',
     title = '',
     text = 'sup',
     children,
     ...props
   } = $props();
+
+  // console.log($inspect(props))
 </script>
 
-<ComponentTemplate {...props}>
+<ComponentTemplate componentTemplateClass={componentClass} {...props}>
   {#if text}
-    <div class="card__title">{text}</div>
+    {text}
   {/if}
 
   {@render children?.()}
