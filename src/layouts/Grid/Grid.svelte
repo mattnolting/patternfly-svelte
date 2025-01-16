@@ -1,23 +1,22 @@
-<script lang='ts'>
-  import { defaultProps } from '$lib/defaultProps.ts';
-  import { defaultStates } from '$props/defaultStates.svelte.ts';
-  import { createClass } from '$functions/createClasses.ts';
-  import 'grid.scss';
+<script lang="ts">
+  import ComponentTemplate from '$lib/ComponentTemplate/ComponentTemplate.svelte';
+  export const gridClass = 'pf-v6-l-grid pf-m-all-6-col-on-sm pf-m-all-4-col-on-md pf-m-all-2-col-on-lg pf-m-all-1-col-on-xl';
 
-  // Destructure props to get defaults and incoming values
   let {
-    className = createClass('grid', 'isRoot'),
-  tag = 'div',
+    cardTitle = {},
+    cardHeader = {},
+    cardBody = {},
+    text = '',
+    isPrimary = false,
     children,
     ...props
-   } = $props();
+  } = $props();
 </script>
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<svelte:element
-  this={tag}
-  class="test"
-  {...props}>
+<ComponentTemplate componentTemplateClass={gridClass} {...props}>
+  {#if text}
+    {text}
+  {/if}
 
   {@render children?.()}
-</svelte:element>
+</ComponentTemplate>

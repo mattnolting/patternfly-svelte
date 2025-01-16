@@ -1,4 +1,5 @@
 <script lang='ts'>
+  import Grid from '$layouts/Grid/Grid.svelte';
   import Card from '$components/Card/Card.svelte';
   import CardHeader from '$components/Card/CardHeader.svelte';
   import CardTitle from '$components/Card/CardTitle.svelte';
@@ -13,18 +14,6 @@
     },
     cardHeader: {
       text: "CARD Header FROM PAGE: "
-    }
-  };
-
-  const card2 = {
-    cardTitle: {
-      text: "Here\'s a new ca asdfrd, it does a thing FOO"
-    },
-    cardBody: {
-      text: "card body new new new content BA asdfR"
-    },
-    cardHeader: {
-      text: "Card header header header BAZ"
     }
   };
 
@@ -81,38 +70,36 @@
 
 </script>
 
-<div class="grid">
+<Grid>
   <!-- Composable: Static values -->
-  <Card text = 'CARD 1' isPrimary = true
-    cardTitle = {{ text: "check me out", isExpanded: true }}
+  <Card text='CARD 1' isPrimary = true
+    cardTitle = {{ text: "check me outsssss", isExpanded: true }}
     cardHeader = {{ text: "This is card header", isExpanded: true }}
   />
 
-  <!-- <Card card = {{ text: 'CARD 2' }} >
+  <Card card = {{ text: 'CARD 2' }} >
     Card accepts strings and html
   </Card>
 
-  <CardTitle cardTitle = {{ text: "check me out", expanded: true }} /> -->
-
   <!-- Composable: Static values -->
-  <!-- <Card>
+  <Card>
     <CardTitle>Card and all of its children - title</CardTitle>
     <CardHeader>Accept strings and html</CardHeader>
     <CardBody>Card body</CardBody>
-  </Card> -->
+  </Card>
 
   <!-- Composable: Using props -->
-  <!-- <Card>
-    <CardTitle cardTitle = {{ text: 'composable example' }} />
-    <CardHeader cardHeader = {{ text: 'example 1 card header' }} />
-    <CardHeader cardBody = {{ text: 'example 1 card header' }} />
-  </Card> -->
+  <Card>
+    <CardTitle text = 'composable example' />
+    <CardHeader text = 'example 1 card header' />
+    <CardHeader text = 'example 1 card header' />
+  </Card>
 
-  <!-- <Card {...card1} />
+  <Card {...card1} />
   <Card cardHeader = {{ text: 'example 1 card header' }} />
   <Card {...card1} cardHeader={{ text: 'heyo Card HEADER'}} cardBody={{ text: 'heyo Card Body'}} cardTitle={{ text: 'heyo Card TITLE', id: 'next thing'}} />
 
   {#each visibleCards as card (card.card.id)}
     <Card {...card } />
-  {/each} -->
-</div>
+  {/each}
+</Grid>

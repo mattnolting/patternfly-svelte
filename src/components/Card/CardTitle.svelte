@@ -1,18 +1,19 @@
 <script lang="ts">
   import ComponentTemplate from '$lib/ComponentTemplate/ComponentTemplate.svelte';
+  export const cardTitleClass = 'pf-v6-c-card__title';
 
   let {
-    componentClass = 'pf-v6-c-card__title',
-    title = '',
-    text = 'sup',
+    cardTitle = {},
+    cardHeader = {},
+    cardBody = {},
+    text = '',
+    isPrimary = false,
     children,
     ...props
   } = $props();
-
-  // console.log($inspect(props))
 </script>
 
-<ComponentTemplate componentTemplateClass={componentClass} {...props}>
+<ComponentTemplate componentTemplateClass={cardTitleClass} {...props}>
   {#if text}
     {text}
   {/if}

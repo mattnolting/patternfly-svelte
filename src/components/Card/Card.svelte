@@ -1,25 +1,25 @@
 <script lang="ts">
   import ComponentTemplate from '$lib/ComponentTemplate/ComponentTemplate.svelte';
 	import { CardTitle, CardHeader, CardBody } from '$components/Card';
-  import { preprocess } from 'svelte/compiler';
+  const className = 'pf-v6-c-card';
 
   let cardStates = $state({
     isExpanded: false
   })
 
   let {
-    cardTitle = '',
-    cardHeader = '',
-    cardBody = '',
     componentTemplateClass = 'pf-v6-c-card',
+    cardTitle = {},
+    cardHeader = {},
+    cardBody = {},
     text = '',
-    isPrimary = 'false',
+    isPrimary = false,
     children,
     ...props
   } = $props();
 </script>
 
-<ComponentTemplate componentTemplateClass={componentTemplateClass} {...props}>
+<ComponentTemplate componentTemplateClass={className} {...props}>
   {#if props.cardTitle}
     <CardTitle {...props.cardTitle} />
   {/if}
@@ -28,10 +28,15 @@
     <CardHeader {...props.cardHeader} />
   {/if}
 
+  {#if props.cardBody}
+    <CardBody {...props.cardBody} />
+  {/if}
+
   <!-- render text if passed to component -->
   {#if text}
     {text}
   {/if}
 
+  <!-- render children if passed to component -->
   {@render children?.()}
 </ComponentTemplate>
