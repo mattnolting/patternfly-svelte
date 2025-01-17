@@ -6,11 +6,27 @@ export const COMPONENT_CONFIG = {
 } as const;
 
 export const GENERIC_MODIFIERS = [
-  'primary', 'secondary', 'tertiary', 'warning', 'danger',
-  'disabled', 'link', 'plain', 'active', 'inline',
-  'control', 'expandable', 'small', 'block'
+  'primary',
+  'secondary',
+  'tertiary',
+  'warning',
+  'danger',
+  'disabled',
+  'link',
+  'plain',
+  'active',
+  'inline',
+  'control',
+  'expandable',
+  'small',
+  'block'
 ] as const;
 
 export const GENERIC_STATES = [
-  'hidden', 'visible', 'expanded', 'disabled', 'active', 'selected'
+  'hidden',
+  'visible',
+  'expanded',
+  'disabled',
+  'active',
+  'selected'
 ] as const;

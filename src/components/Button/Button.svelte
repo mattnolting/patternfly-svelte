@@ -1,6 +1,6 @@
 <script lang="ts">
-  import ComponentTemplate from '$lib/ComponentTemplate/ComponentTemplate.svelte';
-	import { CardTitle, CardHeader, CardBody } from '$components/Card';
+  import ComponentTemplate from "$lib/ComponentTemplate/ComponentTemplate.svelte";
+	import { CardTitle, CardHeader, CardBody } from '$src/components/Card/_index';
   // if component or sub-component is expected to render children,
 
   export const componentClass = 'pf-v6-c-card';
@@ -23,7 +23,7 @@
   } = $props();
 </script>
 
-<ComponentTemplate componentTemplateClass={componentClass} {...props}>
+<ComponentTemplate templateClass={componentClass} {...props}>
   {#if props.cardTitle}
     <CardTitle {...props.cardTitle} />
   {/if}

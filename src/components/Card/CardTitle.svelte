@@ -1,22 +1,15 @@
-<script lang="ts">
-  import ComponentTemplate from '$lib/ComponentTemplate/ComponentTemplate.svelte';
-  export const cardTitleClass = 'pf-v6-c-card__title';
+<script lang='ts'>
+  const componentClass = 'pf-v6-c-card__title';
 
   let {
-    cardTitle = {},
-    cardHeader = {},
-    cardBody = {},
+    isExpanded = false,
     text = '',
-    isPrimary = false,
     children,
     ...props
   } = $props();
 </script>
 
-<ComponentTemplate componentTemplateClass={cardTitleClass} {...props}>
-  {#if text}
-    {text}
-  {/if}
+<div class={componentClass} class:pf-m-expanded={isExpanded}>
 
-  {@render children?.()}
-</ComponentTemplate>
+  {text}{@render children?.()}
+</div>

@@ -18,7 +18,8 @@ const config = {
 			'$assets': path.resolve("./src/assets"),
 			'$base': path.resolve("./src/base"),
       '$components': path.resolve('./src/components'),
-			'$functions': path.resolve("./src/lib/functions"),
+      '$componentTemplate': path.resolve('./src/lib/ComponentTemplate/ComponentTemplate.svelte'),
+			'$functions': path.resolve("./src/functions"),
 			'$images': path.resolve("./src/lib/images"),
 			'$layouts': path.resolve("./src/layouts"),
       '$lib': path.resolve('./src/lib'),
@@ -28,28 +29,27 @@ const config = {
 			'$styles': path.resolve("./src/styles"),
 			'$types': path.resolve("./src/types")
     },
-    prerender: {
-      handleHttpError: ({ path, referrer, message }) => {
-        // Ignore 404s during prerendering
-        if (message.includes('404')) {
-          return;
-        }
-        // Otherwise, throw the error
-        throw new Error(message);
-      }
-    }
+    // prerender: {
+    //   handleHttpError: ({ path, referrer, message }) => {
+    //     // Ignore 404s during prerendering
+    //     if (message.includes('404')) {
+    //       return;
+    //     }
+    //     // Otherwise, throw the error
+    //     throw new Error(message);
+    //   }
+    // }
   },
   preprocess: [
     preprocess({
       scss: {
         includePaths: [path.join(process.cwd(), 'src/styles')],
-        prependData: '@use "src/styles/sass-utilities" as *;'
       }
     })
   ],
-  compilerOptions: {
-    runes: true
-  }
+  // compilerOptions: {
+  //   runes: true
+  // }
 };
 
 export default config;

@@ -31,7 +31,7 @@ async function processScssFiles(sourceDir, outDir, distDir) {
     {
       findFileUrl(url) {
         const patterns = [
-          // { pattern: '@sass-utilities', path: 'src/styles/sass-utilities/_index.scss' },
+          // { pattern: '../.../sass-utilities', path: 'src/styles/sass-utilities/_index.scss' },
           { pattern: '/base', path: 'src/styles/base/_index.scss' },
           { pattern: './layouts', path: 'src/layouts/_index.scss' }
         ];
@@ -86,6 +86,18 @@ async function processScssFiles(sourceDir, outDir, distDir) {
 }
 
 async function processStructure(sourceDir, outDir) {
+  // First, ensure ComponentTemplate is available globally
+  const componentTemplatePath = join(sourceDir, 'lib', 'ComponentTemplate.svelte');
+  if (!existsSync(componentTemplatePath)) {
+    console.error('ComponentTemplate.svelte not found in lib directory');
+    return;
+  }
+
+  // Copy ComponentTemplate to a location where it can be imported globally
+  const globalComponentsDir = join(outDir, 'lib');
+  mkdirSync(globalComponentsDir, { recursive: true });
+  copyFileSync(componentTemplatePath, join(globalComponentsDir, 'ComponentTemplate.svelte'));
+
   const sections = ['components', 'layouts'];
 
   await Promise.all(sections.map(async (section) => {

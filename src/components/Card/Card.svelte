@@ -1,25 +1,32 @@
 <script lang="ts">
-  import ComponentTemplate from '$lib/ComponentTemplate/ComponentTemplate.svelte';
-	import { CardTitle, CardHeader, CardBody } from '$components/Card';
+  import ComponentTemplate from '$componentTemplate';
+  import { CardTitle, CardHeader, CardBody } from '$src/components/Card/_index.ts';
+
   const className = 'pf-v6-c-card';
 
-  let cardStates = $state({
-    isExpanded: false
+  const cardState = $state({
+    isPrimary: false,
+    isExpanded: false,
+    isNeat: false,
+    isTough: false
   })
 
   let {
-    componentTemplateClass = 'pf-v6-c-card',
-    cardTitle = {},
-    cardHeader = {},
-    cardBody = {},
+    tag='div',
+    cardClassName = className,
+    cardTitle = {}, // when calling sub-components, the variable must be intitialized
+    cardHeader = {}, // when calling sub-components, the variable must be intitialized
+    cardBody = {}, // when calling sub-components, the variable must be intitialized
     text = '',
-    isPrimary = false,
+    options = {},
     children,
     ...props
   } = $props();
+
+  console.log($inspect(props))
 </script>
 
-<ComponentTemplate componentTemplateClass={className} {...props}>
+<svelte:element this={tag} class='pf-v6-c-card' class:pf-m-expanded={cardState.isExpanded} {...props}>
   {#if props.cardTitle}
     <CardTitle {...props.cardTitle} />
   {/if}
@@ -32,11 +39,9 @@
     <CardBody {...props.cardBody} />
   {/if}
 
-  <!-- render text if passed to component -->
   {#if text}
     {text}
   {/if}
 
-  <!-- render children if passed to component -->
   {@render children?.()}
-</ComponentTemplate>
+</svelte:element>

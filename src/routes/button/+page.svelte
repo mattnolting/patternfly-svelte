@@ -1,24 +1,25 @@
 <script lang='ts'>
+  import ComponentTemplate from "$lib/ComponentTemplate/ComponentTemplate.svelte";
   import Button from '$components/Button/Button.svelte';
   let buttonText = 'Button text from +page.svelte';
   let buttonIcon = 'ellipsis';
 
   const myData = [
     {
-      buttonText: 'First butt',
-      buttonIcon: 'butt',
+      buttonText: 'First button',
+      buttonIcon: 'button',
       isExpanded: true,
       isClicked: true,
       ariaExpanded: true,
       tag: 'div'
     },
     {
-      buttonText: 'Second booty',
+      buttonText: 'Second button',
       ariaExpanded: true,
-      buttonIcon: 'snail-butts'
+      buttonIcon: 'button'
     },
     {
-      buttonText: 'Third wanger',
+      buttonText: 'Third wing',
       buttonIcon: 'hola-wave'
     },
   ];

@@ -1,25 +1,30 @@
 <script lang="ts">
-interface ComponentTemplateProps {
-  tag?: string;
-  componentTemplateClass?: string;
-  isExpanded?: boolean;  // Make it optional with '?'
-  children?: () => unknown;
-  [key: string]: any;
-}
+  import { getClasses } from "$functions/utils";
 
-let {
-  tag = 'div',
-  componentTemplateClass = '',
-  isExpanded = false,  // Provide default value
-  children,
-  ...props
-} = $props();
+  interface ComponentTemplateProps {
+    name?: string;
+    templateClass?: string;
+    tag?: string;
+    templateStates?: Record<string, boolean>;
+    children?: () => unknown;
+    [key: string]: any;
+  }
+
+  let {
+    name = '',
+    templateClass = 'template class missing, add to let { props } = props() in your component',
+    templateStates = {},
+    tag = 'div',
+    children,
+    ...props
+  } = $props();
+
+  let classes = getClasses(templateClass, templateStates);
 </script>
 
 <svelte:element
   this={tag}
-  class={componentTemplateClass}
-  data-expanded={isExpanded}
+  class={classes}
   {...props}
 >
   {@render children?.()}

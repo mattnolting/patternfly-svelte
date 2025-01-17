@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ComponentTemplate from '$lib/ComponentTemplate/ComponentTemplate.svelte';
+  import ComponentTemplate from "$lib/ComponentTemplate/ComponentTemplate.svelte";
 
   let {
     componentClass = 'pf-v6-l-grid__item',
@@ -11,7 +11,7 @@
   } = $props();
 </script>
 
-<ComponentTemplate {...props} componentTemplateClass={componentClass}>
+<ComponentTemplate {...props} templateClass={componentClass}>
   {#if text}
     {text}
   {/if}

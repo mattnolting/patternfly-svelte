@@ -5,7 +5,7 @@
   import CardTitle from '$components/Card/CardTitle.svelte';
   import CardBody from '$components/Card/CardBody.svelte';
 
-  const card1 = {
+  const card1={
     cardTitle: {
       text: "STATE:::: cardCompnent"
     },
@@ -19,7 +19,7 @@
 
   // Stateful object
   // Use when values are dynamic
-  let cards = $state([
+  let cards=$state([
     {
       card: {
         id: 'id1',
@@ -60,11 +60,11 @@
     }
   ]);
 
-  let visibleCards = $derived(cards.filter(card => card.card.isVisible));
+  let visibleCards=$derived(cards.filter(card => card.card.isVisible));
   // import { page } from '$app/state';
 	// import type { PageData } from './$types';
 
-	// let { data }: { data: PageData } = $props();
+	// let { data }: { data: PageData }=$props();
 
   // console.log($inspect(props))
 
@@ -72,12 +72,15 @@
 
 <Grid>
   <!-- Composable: Static values -->
-  <Card text='CARD 1' isPrimary = true
-    cardTitle = {{ text: "check me outsssss", isExpanded: true }}
-    cardHeader = {{ text: "This is card header", isExpanded: true }}
-  />
+  <Card isExpanded text='my new text' />
 
-  <Card card = {{ text: 'CARD 2' }} >
+
+
+
+
+  <Card text='CARD 1' cardTitle={{ text: "check me outsssss", isExpanded: true }} cardHeader={{ text: "This is card header", isExpanded: true }} />
+
+  <Card text='CARD 2' >
     Card accepts strings and html
   </Card>
 
@@ -90,13 +93,12 @@
 
   <!-- Composable: Using props -->
   <Card>
-    <CardTitle text = 'composable example' />
-    <CardHeader text = 'example 1 card header' />
-    <CardHeader text = 'example 1 card header' />
+    <CardTitle text='composable example' />
+    <CardHeader text='example 1 card header' />
+    <CardHeader text='example 1 card header' />
   </Card>
 
-  <Card {...card1} />
-  <Card cardHeader = {{ text: 'example 1 card header' }} />
+  <Card cardHeader={{ text: 'example 1 card header' }} />
   <Card {...card1} cardHeader={{ text: 'heyo Card HEADER'}} cardBody={{ text: 'heyo Card Body'}} cardTitle={{ text: 'heyo Card TITLE', id: 'next thing'}} />
 
   {#each visibleCards as card (card.card.id)}

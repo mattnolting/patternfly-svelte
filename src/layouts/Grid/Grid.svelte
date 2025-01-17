@@ -1,19 +1,15 @@
 <script lang="ts">
-  import ComponentTemplate from '$lib/ComponentTemplate/ComponentTemplate.svelte';
-  export const gridClass = 'pf-v6-l-grid pf-m-all-6-col-on-sm pf-m-all-4-col-on-md pf-m-all-2-col-on-lg pf-m-all-1-col-on-xl';
+  import ComponentTemplate from "$lib/ComponentTemplate/ComponentTemplate.svelte";
 
   let {
-    cardTitle = {},
-    cardHeader = {},
-    cardBody = {},
+    componentClass = 'pf-v6-l-grid',
     text = '',
-    isPrimary = false,
     children,
     ...props
   } = $props();
 </script>
 
-<ComponentTemplate componentTemplateClass={gridClass} {...props}>
+<ComponentTemplate templateClass={componentClass} {...props}>
   {#if text}
     {text}
   {/if}
